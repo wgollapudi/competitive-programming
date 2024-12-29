@@ -1,0 +1,15 @@
+CXX := g++
+CXXFLAGS := -Wall -g -std=c++23
+
+.PHONY: all clean
+
+SOURCES := $(wildcard *.cpp)
+TARGETS := $(SOURCES:.cpp=)
+
+all: $(TARGETS)
+
+%: %.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $<
+
+clean:
+	rm -f $(TARGETS) *.o
